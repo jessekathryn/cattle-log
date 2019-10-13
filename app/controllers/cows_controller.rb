@@ -1,17 +1,16 @@
 
 class CowsController < ApplicationController
      get "/cows" do
-        if is_logged_in? 
+        if logged_in? 
             @cows = Cow.all
-            erb :'/index'
+            erb :'/cows/index'
         else
             redirect to '/login'
         end
     end
 
     get "/cows/new" do
-        binding.pry
-        if is_logged_in?  
+        if logged_in?  
            erb :'/cows/new'
         else
            redirect to '/login'
