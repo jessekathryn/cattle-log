@@ -6,7 +6,7 @@ class UsersController < Sinatra::Base
 
     get "/signup" do
         if is_logged_in?
-         redirect to '/cows/show'
+         redirect to '/index'
         else
          erb :signup
         end
@@ -17,7 +17,7 @@ class UsersController < Sinatra::Base
             if @user.username != "" && @user.email != "" && @user.password != "" && @user.password_digest
                 @user.save
                 session[:user_id] = @user.id  
-                redirect to '/cows/show'
+                redirect to '/index'
             else
                 redirect to '/signup'
         end
@@ -25,7 +25,7 @@ class UsersController < Sinatra::Base
 
     get "/login" do
         if is_logged_in?
-            redirect to '/cows/show'
+            redirect to 'index'
         else   
             erb :login  
         end 
@@ -35,7 +35,7 @@ class UsersController < Sinatra::Base
         @user = User.find_by(:username => params[:username])
             if @user && @user.username && @user.authenticate(params[:password])
              session[:user_id] = @user.id
-                redirect to '/cows/show'
+                redirect to 'index'
             else
                 redirect to '/login'
             end
