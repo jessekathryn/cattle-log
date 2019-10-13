@@ -1,17 +1,1 @@
-<h1><%= @cows.name %> Profile Page </h1>
-
-<h2><%= @cows.name %> was born on <%= cows.birthdate %> and is in <%= @cows.health %> health. </h2>
-
-<h2> Type: <%= @cows.type %> </h2>
-<h2> Color: <%= @cows.color %> </h2>
-<h2> Age: <%= @cows.age %> </h2>
-<h2> Weight: <%= @cows.weight %> </h2>
-
-<input type="text" name="content" value="<%= @cows.name %>">
-
-<form method="post" action="/cows/all/<%=@cow.id%>/delete">
-  <input id="hidden" type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Cow">
-</form>
-
-<a href="/cows/all/<%=@cow.id%>/edit"> Edit Cow</a>
+<h1><%= @cow.slug %> Profile Page </h1>

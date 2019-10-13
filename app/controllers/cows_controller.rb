@@ -1,6 +1,6 @@
-
 class CowsController < ApplicationController
-     get "/cows" do
+
+     get "/cows/all" do
         if logged_in? 
             @cows = Cow.all
             erb :'/cows/all'
@@ -9,57 +9,46 @@ class CowsController < ApplicationController
         end
     end
 
-    get "/cows/new" do
+    get "/cows/add_new" do
         if logged_in?  
-           erb :'/cows/new'
+           erb :'/cows/add_new'
         else
            redirect to '/login'
         end
     end
 
+    get "/cows/:slug" do
+      @cow = Cow.find_by_slug(params[:slug])
+      redirect to "/cows/show"
+    end
+  
     post "/cows" do
-        if logged_in?
-          if params[:name] == ""
-            redirect to "/cows/new"
-          else
-            @cow = current_user.cows.build(params)
-            if @cow.save
-              redirect to "/cows/#{@cow.id}"
-            else
-              redirect to "/cows/new"
-            end
-          end
-        else
-          redirect to '/login'
-        end
+      if logged_in?
+       @cow = Cow.create(:name => params["name"])
+       @cow = current_user.cows.build(name: params[:name])
+       @cow.save
+          redirect("/cows/#{@cow.slug}")
+      else 
+        redirect to '/login'
       end
-
-    get "/cows/:id" do
-        if logged_in?
-            @cow = Cow.find_by_id(params[:id])
-            erb :'/cows/show'
-        else
-            redirect to '/login'
-        end
     end
 
     get "/cows/:id/edit" do
             if logged_in? && @cow && @cow.user == current_user
-                @cow = Cow.find_by_id(params[:id]) 
-                erb :"/cows/#{@cow.id}"
+                @cow = Cow.find_by_slug(params[:slug]) 
+                erb :"/cows/#{@cow.slug}"
             else
                 redirect to '/login'
         end
     end
- 
 
     delete "/cows/:id/delete" do
         if logged_in?
-          @cow = Cow.find_by_id(params[:id])
+          @cow = Cow.find_by_slug(params[:slug])
           if @cow && @cow.user == current_user
             @cow.delete
           end
-          redirect to '/cows'
+          redirect to '/cows/all'
         else
           redirect to '/login'
         end
