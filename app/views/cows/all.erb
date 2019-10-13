@@ -1,0 +1,10 @@
+Welcome Back, <%= @user.username %>!
+
+Your cattle:
+
+<% @cows.each do |cow| %>
+   <ul> <%= cow.name %> </ul> 
+   <p><a href="/cows/<%= cow.slug %>"><%= cow.name %></a></p>
+<% end %>
+
+<p>Click <a href="/cows/new/">Add Cow</a> to add new cow. </p>

@@ -3,7 +3,7 @@ class CowsController < ApplicationController
      get "/cows" do
         if logged_in? 
             @cows = Cow.all
-            erb :'/cows/index'
+            erb :'/cows/all'
         else
             redirect to '/login'
         end
@@ -18,7 +18,7 @@ class CowsController < ApplicationController
     end
 
     post "/cows" do
-        if is_logged_in?
+        if logged_in?
           if params[:name] == ""
             redirect to "/cows/new"
           else
@@ -35,8 +35,8 @@ class CowsController < ApplicationController
       end
 
     get "/cows/:id" do
-        if is_logged_in?
-            @cow = Cows.find_by_id(params[:id])
+        if logged_in?
+            @cow = Cow.find_by_id(params[:id])
             erb :'/cows/show'
         else
             redirect to '/login'
@@ -44,9 +44,8 @@ class CowsController < ApplicationController
     end
 
     get "/cows/:id/edit" do
-            if is_logged_in? && @cow && @cow.user == current_user
-                @cow = Tweet.find_by_id(params[:id])
-                
+            if logged_in? && @cow && @cow.user == current_user
+                @cow = Cow.find_by_id(params[:id]) 
                 erb :"/cows/#{@cow.id}"
             else
                 redirect to '/login'
@@ -55,8 +54,8 @@ class CowsController < ApplicationController
  
 
     delete "/cows/:id/delete" do
-        if is_logged_in?
-          @cow = Tweet.find_by_id(params[:id])
+        if logged_in?
+          @cow = Cow.find_by_id(params[:id])
           if @cow && @cow.user == current_user
             @cow.delete
           end
