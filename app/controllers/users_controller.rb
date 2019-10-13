@@ -1,16 +1,16 @@
-class UsersController < Sinatra::Base
+class UsersController < ApplicationController
     get "/users/:slug" do
         @user = User.find_by_slug(params[:slug])
         erb :'/users/show'
     end
 
     get "/signup" do
-        if is_logged_in?
+        if logged_in?
          redirect to '/index'
         else
          erb :signup
         end
-       end
+    end
      
     post "/signup" do
         @user = User.new(:email => params[:email], :username => params[:username], :password => params[:password])
@@ -24,7 +24,7 @@ class UsersController < Sinatra::Base
     end
 
     get "/login" do
-        if is_logged_in?
+        if logged_in?
             redirect to 'index'
         else   
             erb :login  
@@ -42,7 +42,7 @@ class UsersController < Sinatra::Base
         end 
 
     get "/logout" do 
-        if is_logged_in?
+        if logged_in?
             session.clear
             redirect to '/login'
         else

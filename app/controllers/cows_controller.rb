@@ -1,3 +1,4 @@
+
 class CowsController < Sinatra::Base
      get "/cows" do
         if is_logged_in? 
@@ -9,6 +10,7 @@ class CowsController < Sinatra::Base
     end
 
     get "/cows/new" do
+        binding.pry
         if is_logged_in?  
            erb :'/cows/new'
         else
@@ -18,7 +20,7 @@ class CowsController < Sinatra::Base
 
     post "/cows" do
         if is_logged_in?
-          if params[:content] == ""
+          if params[:name] == ""
             redirect to "/cows/new"
           else
             @cow = current_user.cows.build(params)
