@@ -1,3 +1,3 @@
-class ExpensesController < Sinatra::Base
+class ExpensesController < ApplicationController
   
 end

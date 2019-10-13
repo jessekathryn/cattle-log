@@ -1,3 +1,3 @@
-class FieldsController < Sinatra::Base
+class FieldsController < ApplicationController
   
 end

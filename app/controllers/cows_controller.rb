@@ -1,5 +1,5 @@
 
-class CowsController < Sinatra::Base
+class CowsController < ApplicationController
      get "/cows" do
         if is_logged_in? 
             @cows = Cow.all

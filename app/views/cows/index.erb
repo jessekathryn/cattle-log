@@ -1,3 +1,7 @@
+Welcome Back, <%= @user.name %>!
+
+Your cows:
+
 <% @cows.each do |cow| %>
-    <%= cow.name %>
+   <ul> <%= cow.name %> </ul>
 <% end %>

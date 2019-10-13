@@ -5,10 +5,10 @@ class UsersController < ApplicationController
     end
 
     get "/signup" do
-        if logged_in?
-         redirect to '/index'
+        if !logged_in?
+            erb :'users/create_user', locals: {message: "Please sign up before you sign in"}
         else
-         erb :signup
+            redirect to '/cows/index'
         end
     end
      
