@@ -1,3 +1,4 @@
+require_relative './config/environment'
 require './config/environment'
 
 if ActiveRecord::Migrator.needs_migration?
@@ -12,3 +13,4 @@ use FieldsController
 use ExpensesController
 
 run ApplicationController
+
