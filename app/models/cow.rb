@@ -2,6 +2,7 @@ require 'pry'
 class Cow < ActiveRecord::Base
     
     belongs_to :user
+    belongs_to :field
 
     def slug
         name.gsub(" ", "-").downcase

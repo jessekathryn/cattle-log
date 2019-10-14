@@ -5,22 +5,22 @@ class UsersController < ApplicationController
         erb :'/users/show'
     end
 
-    get "/signup" do
+    get "/signup_welcome" do
         if !logged_in?
-            erb :'signup'
+            erb :'signup_welcome'
         else
             redirect to '/cows/all'
         end
     end
      
-    post "/signup" do
+    post "/signup_welcome" do
         @user = User.new(:email => params[:email], :username => params[:username], :password => params[:password])
             if @user.username != "" && @user.email != "" && @user.password != "" && @user.password_digest
                 @user.save
                 session[:user_id] = @user.id  
                 redirect to '/cows/all'
             else
-                redirect to '/signup'
+                redirect to '/signup_welcome'
         end
     end
 

@@ -10,7 +10,8 @@ class CreateCows < ActiveRecord::Migration
         t.string :health
         t.string :color
         t.integer :user_id
-        t.integer :field_id
+        t.string :notes
+        t.string :field_name
       end
    end
 end

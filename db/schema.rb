@@ -23,7 +23,8 @@ ActiveRecord::Schema.define(version: 20191013051638) do
     t.string  "health"
     t.string  "color"
     t.integer "user_id"
-    t.integer "field_id"
+    t.string  "notes"
+    t.string  "field_name"
   end
 
   create_table "expenses", force: :cascade do |t|

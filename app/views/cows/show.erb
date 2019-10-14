@@ -2,17 +2,16 @@
 
 <a href="/cows/<%=@cow.id%>/edit"> Edit Cow </a>
 
-
 <h1><%= @cow.tag_number %> Tag ID </h1><br></br>
 
 <h2><%= @cow.name %> was born on <%= @cow.birthdate %> and is in <%= @cow.health %> health. </h2>
 
-<h2> Type: <%= @cow.type %> </h2>
+<h2> Status: <%= @cow.cow_status %> </h2>
 <h2> Color: <%= @cow.color %> </h2>
 <h2> Age: <%= @cow.age %> </h2>
 <h2> Weight: <%= @cow.weight %> </h2>
 
 <form method="post" action="/cows/<%=@cow.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Tweet">
+  <input type="submit" value="Delete Cow">
 </form>

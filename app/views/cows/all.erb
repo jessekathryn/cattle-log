@@ -2,9 +2,8 @@
 <h2> Your Herd: </h2><br></br>
 
 <% @cows.each do |cow| %>
-   <ul><%= cow.id %> </ul><br></br>
-   <ul><%= cow.name %> </ul><br></br>
-   
+   <ul><%= cow.id %>. <%= cow.name %> <%</ul>
+
 <% end %>
 
-<p>Click <a href="/cows/add_new">Add Cow</a> to add new cow. </p><br></br>
+<p><a href="/cows/add_new">Add New Cow</a> </p><br></br>
