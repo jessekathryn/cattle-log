@@ -16,13 +16,14 @@ ActiveRecord::Schema.define(version: 20191013051638) do
   create_table "cows", force: :cascade do |t|
     t.string  "name"
     t.integer "tag_number"
-    t.string  "type"
+    t.string  "cow_status"
     t.integer "age"
     t.integer "birthdate"
     t.integer "weight"
     t.string  "health"
     t.string  "color"
     t.integer "user_id"
+    t.integer "field_id"
   end
 
   create_table "expenses", force: :cascade do |t|
