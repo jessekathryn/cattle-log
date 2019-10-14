@@ -1,6 +1,6 @@
 class CowsController < ApplicationController
 
-     get "/cows/all" do
+    get "/cows/all" do
         if logged_in? 
             @cows = Cow.all
             erb :'/cows/all'
@@ -16,18 +16,26 @@ class CowsController < ApplicationController
            redirect to '/login'
         end
     end
-
-    get "/cows/:slug" do
-      @cow = Cow.find_by_slug(params[:slug])
-      redirect to "/cows/show"
-    end
   
-    post "/cows" do
+    post "/cows/all" do
       if logged_in?
-       @cow = Cow.create(:name => params["name"])
-       @cow = current_user.cows.build(name: params[:name])
-       @cow.save
-          redirect("/cows/#{@cow.slug}")
+        if params[:id] == ""
+          redirect to "/cows/add_new"
+        else
+            @cow = current_user.cows.build(id: params[:id])
+          if @cow.save
+            redirect("/cows/show")
+          end
+        end
+      else 
+        redirect to '/login'
+      end
+    end
+
+    get "/cows/:id" do
+      if logged_in?
+        @cow = Cow.find_by_id(params[:id])
+        erb :'/cows/show'
       else 
         redirect to '/login'
       end
@@ -35,8 +43,8 @@ class CowsController < ApplicationController
 
     get "/cows/:id/edit" do
             if logged_in? && @cow && @cow.user == current_user
-                @cow = Cow.find_by_slug(params[:slug]) 
-                erb :"/cows/#{@cow.slug}"
+                @cow = Cow.find_by_slug(params[:id]) @
+                erb :"/cows/#{@cow.id}"
             else
                 redirect to '/login'
         end

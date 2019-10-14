@@ -1,9 +1,8 @@
 <h1>Welcome Back, <%= current_user.username %>! </h1>
-<h2> Your Herd: </h2> 
+<h2> Your Herd: </h2><br></br>
 
 <% @cows.each do |cow| %>
-   <ul> <%= cow.name %> </ul> 
-   <p><a href="/cows/<%= cow.slug %>"><%= cow.name %></a></p>
+   <ul><%= cow.id %> </ul><br></br>
 <% end %>
 
-<p>Click <a href="/cows/add_new">Add Cow</a> to add new cow. </p>
+<p>Click <a href="/cows/add_new">Add Cow</a> to add new cow. </p><br></br>
