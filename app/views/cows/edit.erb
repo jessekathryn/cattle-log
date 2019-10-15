@@ -1,30 +1,56 @@
+<head>
+
+<img src="images/cattle-log.png" class="right">
+
+<style>
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+body {
+  background-color: rgba(4, 17, 59, 0.932);
+  color: rgba(9, 9, 10, 0.89);
+  font-family: ;
+  line-height: 18px;
+}
+.wrapper {
+  background: rgb(252, 249, 249);
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+  margin: 16px auto;
+  max-width: 960px;
+  padding: 2.25%; /* 18px / 800px */
+  width: 85%;
+}
+<title>Cattle-Log</title>
+</style>
+</head>
+
+    <input type="text" name="content" value="<%= @tweet.content %>">
+    
 <h2> Edit Cow </h2>
 
-<form action="/cows/all" method="POST">
+<form method="post" action="/cows/<%=cow.user_id%>">
 
-<label>Cow Name:</label>
-<input type="text" name="cow[name]" id="name"><br></br>
+<input id="hidden" type="hidden" name="_method" value="PATCH">
 
-<label>Tag Number:</label>
-<input type="text" name="cow[tag_number]" id="tag_number"><br></br>
+<label>Cow Name:</label> <input type="text" name="cow[name]" id="name" value="<%= @cow.name %>"><br></br>
 
-<label>Birthdate:</label>
-<input type="text" name="cow[birthdate]" id="birthdate"><br></br>
+<label>Tag Number:</label> <input type="text" name="cow[tag_number]" id="tag_number" value="<%= @cow.tag_number %>"> <br></br>
 
-<label>Type:</label>
-<input type="text" name="cow[cow_status]" id="cow_status"><br></br>
+<label>Birthdate:</label> <input type="text" name="cow[birthdate]" id="birthdate" value="<%= @cow.birthdate %>"><br></br>
 
-<label>Color:</label>
-<input type="text" name="cow[color]" id="color"><br></br>
+<label>Type:</label> <input type="text" name="cow[cow_status]" id="cow_status" value="<%= @cow.cow_status%>"><br></br>
 
-<label>Age:</label>
-<input type="text" name="cow[age]" id="age"><br></br>
+<label>Color:</label> <input type="text" name="cow[color]" id="color" value="<%= @cow.color%>"><br></br>
 
-<label>Weight:</label>
-<input type="text" name="cow[weight]" id="weight"><br></br>
+<label>Age:</label> <input type="text" name="cow[age]" id="age" value="<%= @cow.age%>"><br></br>
 
-<label>Health:</label>
-<input type="text" name="cow[birthdate]" id="birthdate"><br></br>
+<label>Weight:</label> <input type="text" name="cow[weight]" id="weight" value="<%= @cow.weight%>"><br></br>
+
+<label>Health:</label> <input type="text" name="cow[health]" id="health" value="<%= @cow.health%>"><br></br>
 
 <input type="submit" value="Edit Cow">
 </form>

@@ -17,15 +17,6 @@ class CowsController < ApplicationController
         end
     end
 
-    get "/cows/:id" do
-      if logged_in?
-        @cow = Cow.find_by(params[:user_id])
-        erb :'/cows/show'
-      else 
-        redirect to '/login'
-      end
-    end
-
     post "/cows/all" do
       if logged_in?
         if params[:cow].empty?  
@@ -33,20 +24,33 @@ class CowsController < ApplicationController
         else
           @cow = Cow.create(params[:cow])
           if @cow.save
-            redirect("/cows/show")
+            redirect("/cows/#{@cow.user_id}")
         end 
          redirect to '/login'
       end  
     end
   end
 
+  get "/cows/:id" do
+    if logged_in?
+      @cow = Cow.find_by(params[:user_id])
+      erb :'/cows/show"'
+    else 
+      redirect to '/login'
+    end
+  end
+
     get "/cows/:id/edit" do
-      if logged_in? && @cow && @cow.user == current_user
-        @cow = Cow.find_by_id(params[:user_id]) 
-        erb :"/cows/#{@cow.user_id}"
+      if logged_in? 
+        @cow = Cow.find_by_id(params[:user_id])
+        if @cow && @cow.user == current_user
+          erb :"/cows/edit"
+        else
+          redirect to '/cows/all'
+        end
       else
         redirect to '/login'
-      end
+      end 
     end
 
     patch '/cows/:id' do
@@ -57,20 +61,20 @@ class CowsController < ApplicationController
           @cow = Cow.find_by_id(params[:user_id])
           if @cow && @cow.user == current_user
             if @cow.update(params[:cow])
-            redirect to "/cows/#{cow.user_id}"
+            redirect to "/cows/#{cow.user_id}/edit"
             end
           else
             redirect to "/cows/all"
-           end
           end
-        else
-          redirect to '/login'
         end
+      else
+        redirect to '/login'
       end
+    end
 
     delete "/cows/:id/delete" do
-        if logged_in?
-          @cow = Cow.find_by_slug(params[:slug])
+      if logged_in?
+        @cow = Cow.find_by_id(params[:user_id])
           if @cow && @cow.user == current_user
             @cow.delete
           end
@@ -79,4 +83,5 @@ class CowsController < ApplicationController
           redirect to '/login'
       end
     end
+
 end

@@ -1,9 +1,36 @@
+<head>
+
+<img src="images/cattle-log.png" class="center">
+
+<style>
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+body {
+  background-color: rgba(4, 17, 59, 0.932);
+  color: rgba(9, 9, 10, 0.89);
+  font-family: ;
+  line-height: 18px;
+}
+.wrapper {
+  background: rgb(252, 249, 249);
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+  margin: 16px auto;
+  max-width: 960px;
+  padding: 2.25%; /* 18px / 800px */
+  width: 85%;
+}
+<title>Cattle-Log</title>
+</style>
+</head>
+
 <h1>Welcome Back, <%= current_user.username %>! </h1>
-<h2> Your Herd: </h2><br></br>
-
+<h2> <%= current_user.username %> Cattle </h2>
 <% @cows.each do |cow| %>
-   <ul><%= cow.id %>. <%= cow.name %> <%</ul>
-
+   <ul><%= cow.id %>. <%= cow.name %> </ul>
 <% end %>
-
 <p><a href="/cows/add_new">Add New Cow</a> </p><br></br>

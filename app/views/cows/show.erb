@@ -1,17 +1,46 @@
+<head>
+
+<img src="images/cattle-log.png" class="center">
+<style>
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+body {
+  background-color: rgba(4, 17, 59, 0.932);
+  color: rgba(9, 9, 10, 0.89);
+  font-family: ;
+  line-height: 18px;
+}
+.wrapper {
+  background: rgb(252, 249, 249);
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+  margin: 16px auto;
+  max-width: 960px;
+  padding: 2.25%; /* 18px / 800px */
+  width: 85%;
+}
+<title>Cattle-Log</title>
+</style>
+</head>
+
 <h1><%= @cow.name %> Profile Page </h1><br></br>
 
-<a href="/cows/<%=@cow.id%>/edit"> Edit Cow </a>
+<h2> Tag ID #<%= @cow.tag_number %> </h2><br></br>
 
-<h1><%= @cow.tag_number %> Tag ID </h1><br></br>
+<h3><%= @cow.name %> was born on <%= @cow.birthdate %> and is in <%= @cow.health %> health. </h3>
 
-<h2><%= @cow.name %> was born on <%= @cow.birthdate %> and is in <%= @cow.health %> health. </h2>
+<h3> Status: <%= @cow.cow_status %> </3>
+<h3> Color: <%= @cow.color %> </h3>
+<h4> Age: <%= @cow.age %> </h4>
+<h4> Weight: <%= @cow.weight %> </h4>
 
-<h2> Status: <%= @cow.cow_status %> </h2>
-<h2> Color: <%= @cow.color %> </h2>
-<h2> Age: <%= @cow.age %> </h2>
-<h2> Weight: <%= @cow.weight %> </h2>
-
-<form method="post" action="/cows/<%=@cow.id%>/delete">
+<form method="post" action="/cows/<%= @cow.user_id %>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Cow">
 </form>
+
+<a href="/cows/<%= @cow.user_id %>/edit"> Edit Cow </a>
