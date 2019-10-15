@@ -24,17 +24,16 @@ body {
 </head>
 
 <h1><%= @cow.name %> </h1><br></br>
-
-<h2> Tag ID# <%= @cow.tag_number %> </h2>
-<h2> Field # <%= @cow.tag_number %> </h2>
-
+<h2> Tag ID# <%= @cow.tag_number %> <br></br> </h2>
+<h3>Field Name: <%= @cow.field_name %> </h3>
 <h3>Year Born: <%= @cow.birthdate %></h3>
 <h3>Health: <%= @cow.health %> </h3>
 <h3>Status: <%= @cow.cow_status %> </h3>
 <h3>Color: <%= @cow.color %> </h3>
 <h3>Age: <%= @cow.age %> </h3>
-<h3>Weight: <%= @cow.weight %> </h3><br></br>
+<h3>Weight: <%= @cow.weight %></h3><br></br>
 
+<h3>Notes: <%= @cow.notes %> </h3><br></br>
 
 <form method="post" action="/cows/<%=@cow.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
@@ -42,7 +41,8 @@ body {
 </form>
 <br></br>
 
-<a href="/cows/<%=@cow.id %>/edit"> Edit Cow </a> | 
+
+<a href="/cows/<%=@cow.id%>/edit"> Edit Cow </a> | 
 <a href="/cows/all"> All Cows </a> |
 <a href="/logout"> Log Out </a> 
 

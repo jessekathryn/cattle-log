@@ -28,15 +28,17 @@ body {
 </style>
 </head>
     
-<h2> Edit Cow </h2>
+<h2> Edit <%= @cow.id %> </h2>
 
-<form method="post" action="/cows/<%=@cow.id%>edit">
+<form method="post" action="/cows/<%=@cow.id%>/edit">
 
 <input id="hidden" type="hidden" name="_method" value="PATCH">
 
 <label>Cow Name:</label> <input type="text" name="cow[name]" id="name" value="<%= @cow.name %>"><br></br>
 
 <label>Tag Number:</label> <input type="text" name="cow[tag_number]" id="tag_number" value="<%= @cow.tag_number %>"> <br></br>
+
+<label>Field Name:</label> <input type="text" name="cow[field_name]" id="field_name" value="<%= @cow.field_name %>"> <br></br>
 
 <label>Year Born:</label> <input type="text" name="cow[birthdate]" id="birthdate" value="<%= @cow.birthdate %>"><br></br>
 
@@ -50,5 +52,7 @@ body {
 
 <label>Health:</label> <input type="text" name="cow[health]" id="health" value="<%= @cow.health%>"><br></br>
 
-<input type="submit" value="Edit Cow">
+<label>Notes:</label> <input type="text" name="cow[notes]" id="notes" value="<%= @cow.notes%>"><br></br>
+
+<input type="submit" value="Save">
 </form>

@@ -49,10 +49,10 @@ class CowsController < ApplicationController
     end 
   end
 
-    patch '/cows/:id' do
+    patch '/cows/:id/edit' do
       if logged_in?  
         @cow = Cow.find_by_id(params[:id])
-        @cow.update(params[:cow])
+        @cow.update(id: params[:id])
           redirect to "/cows/#{@cow.id}"
       else
         redirect to '/login'
