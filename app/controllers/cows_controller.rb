@@ -24,7 +24,7 @@ class CowsController < ApplicationController
         else
           @cow = Cow.create(params[:cow])
           if @cow.save
-            redirect("/cows/#{@cow.user_id}")
+            redirect("/cows/#{@cow.id}")
         end 
          redirect to '/login'
       end  
@@ -33,40 +33,27 @@ class CowsController < ApplicationController
 
   get "/cows/:id" do
     if logged_in?
-      @cow = Cow.find_by(params[:user_id])
-      erb :'/cows/show"'
+      @cow = Cow.find_by(params[:cow])
+      erb :'/cows/show'
     else 
       redirect to '/login'
     end
   end
 
-    get "/cows/:id/edit" do
-      if logged_in? 
-        @cow = Cow.find_by_id(params[:user_id])
-        if @cow && @cow.user == current_user
-          erb :"/cows/edit"
-        else
-          redirect to '/cows/all'
-        end
-      else
-        redirect to '/login'
-      end 
-    end
+  get "/cows/:id/edit" do
+    if logged_in? 
+      @cow = Cow.find_by_id(params[:id])
+        erb :"/cows/edit"
+    else
+      redirect to '/login'
+    end 
+  end
 
     patch '/cows/:id' do
-      if logged_in? 
-        if params[:cow].empty?
-          redirect to "/cows/#{params[:id]}/edit"
-        else  
-          @cow = Cow.find_by_id(params[:user_id])
-          if @cow && @cow.user == current_user
-            if @cow.update(params[:cow])
-            redirect to "/cows/#{cow.user_id}/edit"
-            end
-          else
-            redirect to "/cows/all"
-          end
-        end
+      if logged_in?  
+        @cow = Cow.find_by_id(params[:id])
+        @cow.update(params[:cow])
+          redirect to "/cows/#{@cow.id}"
       else
         redirect to '/login'
       end
@@ -74,12 +61,10 @@ class CowsController < ApplicationController
 
     delete "/cows/:id/delete" do
       if logged_in?
-        @cow = Cow.find_by_id(params[:user_id])
-          if @cow && @cow.user == current_user
-            @cow.delete
-          end
+        @cow = Cow.find_by_id(params[:id])
+         @cow.delete
           redirect to '/cows/all'
-        else
+          else
           redirect to '/login'
       end
     end

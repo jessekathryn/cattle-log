@@ -15,24 +15,22 @@ body {
   line-height: 18px;
 }
 .wrapper {
-  background: rgb(252, 249, 249);
-  -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
-  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
-  box-shadow: 0 0 10px rgba(0,0,0,.3);
-  margin: 16px auto;
-  max-width: 960px;
-  padding: 2.25%; /* 18px / 800px */
-  width: 85%;
-}
+    background: rgb(255, 255, 255);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    margin: 16px auto;
+    max-width: 960px;
+    padding: 2.25%; /* 18px / 800px */
+    width: 85%;
+  }
 <title>Cattle-Log</title>
 </style>
 </head>
-
-    <input type="text" name="content" value="<%= @tweet.content %>">
     
 <h2> Edit Cow </h2>
 
-<form method="post" action="/cows/<%=cow.user_id%>">
+<form method="post" action="/cows/<%=@cow.id%>edit">
 
 <input id="hidden" type="hidden" name="_method" value="PATCH">
 
@@ -40,7 +38,7 @@ body {
 
 <label>Tag Number:</label> <input type="text" name="cow[tag_number]" id="tag_number" value="<%= @cow.tag_number %>"> <br></br>
 
-<label>Birthdate:</label> <input type="text" name="cow[birthdate]" id="birthdate" value="<%= @cow.birthdate %>"><br></br>
+<label>Year Born:</label> <input type="text" name="cow[birthdate]" id="birthdate" value="<%= @cow.birthdate %>"><br></br>
 
 <label>Type:</label> <input type="text" name="cow[cow_status]" id="cow_status" value="<%= @cow.cow_status%>"><br></br>
 

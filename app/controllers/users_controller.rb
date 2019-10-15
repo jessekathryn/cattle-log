@@ -36,7 +36,7 @@ class UsersController < ApplicationController
         @user = User.find_by(:username => params[:username])
             if @user && @user.username && @user.authenticate(params[:password])
              session[:user_id] = @user.id
-                redirect to '/cows/all'
+                redirect to '/users/show'
             else
                 redirect to '/login'
             end

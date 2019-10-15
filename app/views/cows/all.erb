@@ -15,22 +15,25 @@ body {
   line-height: 18px;
 }
 .wrapper {
-  background: rgb(252, 249, 249);
-  -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
-  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
-  box-shadow: 0 0 10px rgba(0,0,0,.3);
-  margin: 16px auto;
-  max-width: 960px;
-  padding: 2.25%; /* 18px / 800px */
-  width: 85%;
-}
+    background: rgb(255, 255, 255);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    margin: 16px auto;
+    max-width: 960px;
+    padding: 2.25%; /* 18px / 800px */
+    width: 85%;
+  }
 <title>Cattle-Log</title>
 </style>
-</head>
 
-<h1>Welcome Back, <%= current_user.username %>! </h1>
-<h2> <%= current_user.username %> Cattle </h2>
+<h1>Welcome Back, @<%= current_user.username %></h1>
+<h2>Your Current Cattle</h2>
 <% @cows.each do |cow| %>
-   <ul><%= cow.id %>. <%= cow.name %> </ul>
-<% end %>
-<p><a href="/cows/add_new">Add New Cow</a> </p><br></br>
+   <ul>Tag # <%= cow.tag_number %> -
+<%= cow.name %> <a href="/cows/<%cow.id%>/edit">Profile</a></ul><br></br>
+<% end %><br></br>
+
+<a href="/cows/add_new">Add New Cow</a><br></br>
+
+</head>
