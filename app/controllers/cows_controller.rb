@@ -33,7 +33,7 @@ class CowsController < ApplicationController
 
   get "/cows/:id" do
     if logged_in?
-      @cow = Cow.find_by(params[:id])
+      @cow = Cow.find_by_id(params[:id])
       @cow.save
       erb :'/cows/show'
     else 

@@ -1,7 +1,6 @@
+
 <head>
-
-<style><img src="images/cattle-log.png" class="center">
-
+<style>
 body {
   background-color: rgba(4, 17, 59, 0.932);
   color: rgba(9, 9, 10, 0.89);
@@ -24,8 +23,8 @@ body {
 </head>
 
 <h1><%= @cow.name %> </h1><br></br>
-<h2> Tag ID# <%= @cow.tag_number %> <br></br> </h2>
-<h3>Field Name: <%= @cow.field_name %> </h3>
+<h2> Tag ID # <%= @cow.tag_number %> <br></br> </h2>
+<h3>Field Name:</h3> <h4><%= @cow.field_name %></h4>
 <h3>Year Born: <%= @cow.birthdate %></h3>
 <h3>Health: <%= @cow.health %> </h3>
 <h3>Status: <%= @cow.cow_status %> </h3>
