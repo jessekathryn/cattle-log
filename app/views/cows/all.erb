@@ -28,10 +28,14 @@ body {
 </style>
 
 <h1>Welcome Back, @<%= current_user.username %></h1>
-<h2>Your Cattle</h2>
+<h2>Your Cows</h2>
 <% @cows.each do |cow| %>
-    <ul>Tag # <%= cow.tag_number %> - <%= cow.name %><a href="/cows/<%=cow.id%>"> Profile</a></ul><br></br>
-<% end %><br></br>
+    <ul>Tag No. <%= cow.tag_number %> - <%= cow.name %> <a href="/cows/<%=cow.id%>"> Profile</a></ul><br></br>
+<% end %>
+
+<% @cows.each do |cow| %>
+    <ul>Tag No. <%= cow.tag_number %> - <%= cow.name %> <a href="/cows/<%=cow.id%>"> Profile</a></ul><br></br>
+<% end %>
 
 <a href="/cows/add_new">Add New Cow</a><br></br>
 <a href="/users/show">My Profile</a><br></br>
