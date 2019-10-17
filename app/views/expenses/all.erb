@@ -1,0 +1,9 @@
+<img src=
+
+<h1>Welcome Back, @<%= current_user.username %></h1>
+<h2>Your Expenses</h2>
+
+<% @expense.each do |expense| %>
+    <li>Expense: $ <%= expense.notes %></li>
+    <% end %><br></br>
+

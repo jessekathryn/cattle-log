@@ -1,0 +1,9 @@
+<h2> Edit Expense </h2>
+
+<form action="/expenses/all" method="POST">
+
+<label>Expense:</label>
+<input type="text" name="expense[notes]" id="notes" value="<%= @expense.notes %>"><br></br>
+
+<input type="submit" value="Save Expense">
+</form>

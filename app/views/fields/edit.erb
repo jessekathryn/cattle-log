@@ -1,0 +1,15 @@
+<h2> Edit Field </h2>
+
+<form method="post" action="/fields/<%=@field.id%>/edit">
+
+<label>Field Name:</label>
+<input type="text" name="field[field_name]" id="field_name" value="<%= @field.field_name %>"> <br></br>
+
+<label>Acreage:</label>
+<input type="text" name="field[acreage]" id="acreage" value="<%= @field.acreage %>"><br></br>
+
+<label>Coordinate:</label>
+<input type="text" name="field[coordinates]" id="coordinates"> value="<%= @field.coordinates %>"<br></br>
+
+<input type="submit" value="Save Field">
+</form>

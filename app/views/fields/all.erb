@@ -1,0 +1,10 @@
+<h1>Welcome Back, @<%= current_user.username %></h1>
+<h2>Your Fields</h2>
+
+<% @fields.each do |field| %>
+    <ul>Field Name: <%= field.field_name %> </ul>
+    <ul>Acreage: <%= field.acreage %> </ul>
+    <ul>Coordinates: <%= field.coordinates%> </ul>
+    <ul><%= Field %> <a href="/fields/<%=field.id%>"> Specifics </a></ul><br></br>
+ <% end %>
+

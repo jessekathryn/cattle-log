@@ -1,33 +1,4 @@
-<head>
 
-<img src="images/cattle-log.png" class="right">
-
-<style>
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-body {
-  background-color: rgba(4, 17, 59, 0.932);
-  color: rgba(9, 9, 10, 0.89);
-  font-family: ;
-  line-height: 18px;
-}
-.wrapper {
-    background: rgb(255, 255, 255);
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
-    box-shadow: 0 0 10px rgba(0,0,0,.3);
-    margin: 16px auto;
-    max-width: 960px;
-    padding: 2.25%; /* 18px / 800px */
-    width: 85%;
-  }
-<title>Cattle-Log</title>
-</style>
-</head>
-    
 <h2> Edit <%= @cow.name %> </h2>
 
 <form method="post" action="/cows/<%=@cow.id%>/edit">

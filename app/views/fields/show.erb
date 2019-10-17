@@ -1,0 +1,9 @@
+
+<h1><%= @field.field_name %> </h1><br></br>
+<h3>Acreage:<%= @field.acreage%></h3>
+<h3>Coordinates <%= @field.coordinates %></h3>
+
+<form method="post" action="/fields/<%=@field.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Field">
+</form>

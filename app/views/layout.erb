@@ -5,21 +5,39 @@
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
   <head>
+
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-  
-    <title>CattleLog</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link rel="stylesheet" href="/stylesheets/main.css" />
-  </head>
-  <body>
+    
+    <style>
+      .img-container {
+        text-align: center;
+      }
+    </style>
 
+    </head>
+
+  <div class="wrapper">
+    <div class="img-container"> 
+      <img src="images/cattle-log_final.png" alt="Logo">
+      <br></br>
+    <a href="/users/show">My Profile</a> 
+    <a href="/cows/all">My Cows</a> 
+    <a href="/fields/all">My Fields</a> 
+    <a href="/expenses/all">My Expenses</a> 
+    <a href="/logout">Log Out</a>
+    
     <div class="wrapper">
+    <body>
 
+
+
+   
         <%= yield %>
-
+       
+ 
       <footer class="branding">
         <small>&copy; 2019 <strong>CattleLog</strong></small>
       </footer>

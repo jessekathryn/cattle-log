@@ -5,6 +5,11 @@ class User < ActiveRecord::Base
     has_many :fields
     has_many :expenses
 
+    def time 
+      time = Time.new
+      puts "Current Time : " + time.inspect
+    end
+
     def slug
       @slug = username.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
       @slug

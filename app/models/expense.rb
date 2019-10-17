@@ -1,4 +1,4 @@
-class  Cow < ActiveRecord::Base
+class  Expense < ActiveRecord::Base
     
     belongs_to :user
 

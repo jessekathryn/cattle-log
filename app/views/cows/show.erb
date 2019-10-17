@@ -1,46 +1,20 @@
-
-<head>
-<style>
-body {
-  background-color: rgba(4, 17, 59, 0.932);
-  color: rgba(9, 9, 10, 0.89);
-  font-family: ;
-  line-height: 18px;
-}
-.wrapper {
-    background: rgb(255, 255, 255);
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
-    box-shadow: 0 0 10px rgba(0,0,0,.3);
-    margin: 16px auto;
-    max-width: 960px;
-    padding: 2.25%; /* 18px / 800px */
-    width: 85%;
-  }
-  
-<title>Cattle-Log</title>
-</style>
-</head>
-
 <h1><%= @cow.name %> </h1><br></br>
-<h2> Tag ID # <%= @cow.tag_number %> <br></br> </h2>
-<h3>Field Name:</h3> <h4><%= @cow.field_name %></h4>
-<h3>Year Born: <%= @cow.birthdate %></h3>
-<h3>Health: <%= @cow.health %> </h3>
-<h3>Status: <%= @cow.cow_status %> </h3>
-<h3>Color: <%= @cow.color %> </h3>
-<h3>Age: <%= @cow.age %> </h3>
-<h3>Weight: <%= @cow.weight %></h3>
-<h3>Notes: <%= @cow.notes %> </h3>
-
+<h2> Current details as of @date.saved </h2>
+<p> Tag ID # <%= @cow.tag_number %></p>
+<p>Field Name: <%= @cow.field_name %></p>
+<p>Year Born: <%= @cow.birthdate %></p>
+<p>Health: <%= @cow.health %> </p>
+<p>Status: <%= @cow.cow_status %> </p>
+<p>Color: <%= @cow.color %> </p>
+<p>Age: <%= @cow.age %> </p>
+<p>Weight: <%= @cow.weight %></p>
+<p>Notes: <%= @cow.notes %> </p>
+<br></br>
 <form method="post" action="/cows/<%=@cow.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Cow">
+</form><br></br>
+<form method="patch" action="/cows/<%=@cow.id%>/edit">
+  <input type="submit" value="Edit Cow">
 </form>
-<br></br>
-
-
-<a href="/cows/<%=@cow.id%>/edit"> Edit Cow </a> | 
-<a href="/cows/all"> All Cows </a> |
-<a href="/logout"> Log Out </a> 
 
