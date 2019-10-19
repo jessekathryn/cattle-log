@@ -1,8 +1,11 @@
-<h1>My Cows</h1>
+<img src="/images/mycows.png" class="img-responsive main-image">
+
 <% @cows.each do |cow| %>
     <li>Tag No. <%= cow.tag_number %> </li>
     <li> <%= cow.name %> </li>
-    <ul><a href="/cows/<%=cow.id%>">Cow Specifics</a></ul><br></br>
+    <li> Located in:  <%= cow.field_name %> </li>
+    <li><a href="/cows/<%=cow.id%>">Cow Specs</a></li><br></br>
+  
 <% end %>
 
 <a href="/cows/add_new">Add New Cow</a><br></br>

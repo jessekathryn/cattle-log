@@ -2,7 +2,7 @@ class FieldsController < ApplicationController
 
         get "/fields/all" do
             if logged_in? 
-                @fields = Field.all
+                @fields = current_user.fields
                 erb :'/fields/all'
             else
                 redirect to '/login'
@@ -23,6 +23,7 @@ class FieldsController < ApplicationController
               redirect to '/fields/add_new'
             else
               @field = Field.create(params[:field])
+              @field.user_id = current_user.id
               if @field.save
                 redirect("/fields/all")
             end 
@@ -54,8 +55,7 @@ class FieldsController < ApplicationController
         patch '/fields/:id/edit' do
           if logged_in?  
             @field = Field.find_by_id(params[:id])
-            @field.update(id: params[:id])
-            @field.save(id: params[:id])
+            @field.update(params[:field])
               redirect to "/fields/#{@field.id}"
           else
             redirect to '/login'

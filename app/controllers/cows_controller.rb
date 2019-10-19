@@ -2,7 +2,7 @@ class CowsController < ApplicationController
 
     get "/cows/all" do
         if logged_in? 
-            @cows = Cow.all
+            @cows = current_user.cows
             erb :'/cows/all'
         else
             redirect to '/login'
@@ -23,6 +23,7 @@ class CowsController < ApplicationController
           redirect to '/cows/add_new'
         else
           @cow = Cow.create(params[:cow])
+          @cow.user_id = current_user.id
           if @cow.save
             redirect("/cows/all")
         end 
@@ -34,7 +35,6 @@ class CowsController < ApplicationController
   get "/cows/:id" do
     if logged_in?
       @cow = Cow.find_by_id(params[:id])
-      @cow.save
       erb :'/cows/show'
     else 
       redirect to '/login'
@@ -44,8 +44,11 @@ class CowsController < ApplicationController
   get "/cows/:id/edit" do
     if logged_in? 
       @cow = Cow.find_by_id(params[:id])
-      @cow.save
+      if @cow && @cow.user == current_user
         erb :"/cows/edit"
+      else 
+        redirect to '/cows/all'
+      end
     else
       redirect to '/login'
     end 
@@ -54,8 +57,7 @@ class CowsController < ApplicationController
     patch '/cows/:id/edit' do
       if logged_in?  
         @cow = Cow.find_by_id(params[:id])
-        @cow.update(id: params[:id])
-        @cow.save(id: params[:id])
+        @cow.update(params[:cow])
           redirect to "/cows/#{@cow.id}"
       else
         redirect to '/login'
