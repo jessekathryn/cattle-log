@@ -3,10 +3,11 @@
 <h1>Welcome Back, <%= current_user.username %></h1>
 <img src="/images/farm.png" class="img-responsive main-image">
 <h3> <%=@user.get_temp%>°F / <%=@user.weather_text%> for Islandton, SC </h3>
+<img src="/images/cowsimage.png" class="img-responsive main-image">
 <h4><%= Time.now.month %>/<%= Time.now.day %> CME Live Cattle Price $<%=@user.get_market_prices%> </h4>
 <br></br>
 
-<h1>What do you want to track today?</h1>
+<h1>What would you like to track today?</h1>
  <a href="/users/<%= current_user.id %>">My Profile</a>  <img src="/images/circle.png" class="img-responsive main-image"> <a href="/cows/all">My Cows</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/fields/all">My Fields</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/expenses/all">My Expenses</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/logout">Log Out</a>
    <br></br>
 
