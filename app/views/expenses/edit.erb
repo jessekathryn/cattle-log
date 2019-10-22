@@ -1,11 +1,18 @@
+<br></br>
+<a href="/users/<%= current_user.id %>">My Profile</a>  <img src="/images/circle.png" class="img-responsive main-image"> <a href="/cows/all">My Cows</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/fields/all">My Fields</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/expenses/all">My Expenses</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/logout">Log Out</a>
+<br></br>
+
 <img src="/images/expenses.png" class="img-responsive main-image">
 
 <h2> Edit Expense </h2>
 
-<form action="/expenses/all" method="POST">
+<form method="post" action="/expenses/<%=@expense.id%>/edit">
+
+<input id="hidden" type="hidden" name="_method" value="PATCH">
 
 <label>Expense:</label>
+
 <input type="text" name="expense[notes]" id="notes" value="<%= @expense.notes %>"><br></br>
 
-<input type="submit" value="Save Expense">
+<input type="submit" value="Save">
 </form>

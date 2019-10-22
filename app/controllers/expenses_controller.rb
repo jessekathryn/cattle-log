@@ -2,7 +2,7 @@ class ExpensesController < ApplicationController
 
     get "/expenses/all" do
         if logged_in? 
-            @expense = Expense.all
+            @expense = current_user.expenses
             erb :'/expenses/all'
         else
             redirect to '/login'
@@ -23,8 +23,9 @@ class ExpensesController < ApplicationController
           redirect to '/expenses/add_new'
         else
           @expense = Expense.create(params[:expense])
+          @expense.user_id = current_user.id
           if @expense.save
-            redirect("/expenses/all")
+            redirect to '/expenses/all'
         end 
          redirect to '/login'
       end  
@@ -34,7 +35,6 @@ class ExpensesController < ApplicationController
   get "/expenses/:id" do
     if logged_in?
       @expense = Expense.find_by_id(params[:id])
-      @expense.save
       erb :'/expenses/show'
     else 
       redirect to '/login'
@@ -44,18 +44,20 @@ class ExpensesController < ApplicationController
   get "/expenses/:id/edit" do
     if logged_in? 
       @expense = Expense.find_by_id(params[:id])
-      @expense.save
+      if @expense && @expense.user == current_user
         erb :"/expenses/edit"
-    else
+      else
+        redirect to 'expenses/all'
+      end 
+    else 
       redirect to '/login'
-    end 
+    end
   end
 
     patch '/expenses/:id/edit' do
       if logged_in?  
         @expense = Expense.find_by_id(params[:id])
-        @expense.update(id: params[:id])
-        @expense.save(id: params[:id])
+        @expense.update(params[:expense])
           redirect to "/expenses/#{@expense.id}"
       else
         redirect to '/login'

@@ -11,12 +11,17 @@
     width: 100%;
   }
  
+  img {
+    max-width:300px;
+  }
 
+
+  
   .content {
     max-width: 500px;
     margin: auto;
   }
-  
+
   /* --- Welcome Page Styles --- */
   body {
     background-color: rgb(2, 21, 53);

@@ -1,11 +1,72 @@
+<br></br>
+<a href="/users/<%= current_user.id %>">My Profile</a>  <img src="/images/circle.png" class="img-responsive main-image"> <a href="/cows/all">My Cows</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/fields/all">My Fields</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/expenses/all">My Expenses</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/logout">Log Out</a>
+<br></br>
+
 <img src="/images/expenses.png" class="img-responsive main-image">
 
 <h2> Add New Expense </h2>
 
 <form action="/expenses/all" method="POST">
 
-<label>Expense:</label>
+<label>Expense Date:</label>
 <input type="text" name="expense[notes]" id="notes"><br></br>
+
+<label>Car and Truck:</label>
+<input type="text" name="expense[car_truck]" id="car_truck"><br></br>
+
+<label>Chemicals:</label>
+<input type="text" name="expense[chemicals]" id="chemicals"><br></br>
+
+<label>Conservation:</label>
+<input type="text" name="expense[conservation]" id="conservation"><br></br>
+
+<label>Depreciation:</label>
+<input type="text" name="expense[depreciation]" id="depreciation"><br></br>
+
+<label>Employee Programs:</label>
+<input type="text" name="expense[employees]" id="employees"><br></br>
+
+<label>Feed:</label>
+<input type="text" name="expense[feed]" id="feed"><br></br>
+
+<label>Fertilizers, Seeds and Plants:</label>
+<input type="text" name="expense[seeds_plants]" id="seeds_plants"><br></br>
+
+<label>Freight or Trucking:</label>
+<input type="text" name="expense[freight_trucking]" id="freight_trucking"><br></br>
+
+<label>Gas:</label>
+<input type="text" name="expense[gas]" id="gas"><br></br>
+
+<label>Repairs:</label>
+<input type="text" name="expense[repairs]" id="repairs"><br></br>
+
+<label>Supplies:</label>
+<input type="text" name="expense[supplies]" id="supplies"><br></br>
+
+<label>Taxes:</label>
+<input type="text" name="expense[taxes]" id="taxes"><br></br>
+
+<label>Vet Fees or Medicine:</label>
+<input type="text" name="expense[vet]" id="vet"><br></br>
+
+<label>Tools:</label>
+<input type="text" name="expense[tools]" id="tools"><br></br>
+
+<label>Fencing and Land:</label>
+<input type="text" name="expense[fencing_land]" id="fencing_land"><br></br>
+
+<label>New Calf:</label>
+<input type="text" name="expense[calf]" id="calf"><br></br>
+
+<label>Dues:</label>
+<input type="text" name="expense[dues]" id="dues"><br></br>
+
+<label>Misc Labor:</label>
+<input type="text" name="expense[misc_labor]" id="misc_labor"><br></br>
+
+<label>Professional Services:</label>
+<input type="text" name="expense[professional]" id="professional"><br></br>
 
 <input type="submit" value="Create Expense">
 </form>

@@ -1,3 +1,7 @@
+<br></br>
+<a href="/users/<%= current_user.id %>">My Profile</a>  <img src="/images/circle.png" class="img-responsive main-image"> <a href="/cows/all">My Cows</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/fields/all">My Fields</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/expenses/all">My Expenses</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/logout">Log Out</a>
+<br></br>
+
 <img src="/images/fields.png" class="img-responsive main-image">
 
 <% @fields.each do |field| %>
@@ -7,3 +11,4 @@
     <ul><%= Field %> <a href="/fields/<%=field.id%>"> Specifics </a></ul><br></br>
  <% end %>
 
+ <a href="/fields/add_new">Add New Field</a><br></br>

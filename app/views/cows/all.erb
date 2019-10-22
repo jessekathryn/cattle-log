@@ -1,11 +1,16 @@
-<img src="/images/mycows.png" class="img-responsive main-image">
+<br></br>
+<a href="/users/<%= current_user.id %>">My Profile</a>  <img src="/images/circle.png" class="img-responsive main-image"> <a href="/cows/all">My Cows</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/fields/all">My Fields</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/expenses/all">My Expenses</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/logout">Log Out</a>
+<br></br>
+
+
+<img src="/images/mycowsbest.png" class="img-responsive main-image">
 
 <% @cows.each do |cow| %>
-    <li>Tag No. <%= cow.tag_number %> </li>
+    <li><strong>Tag No. <%= cow.tag_number %> </strong></li>
     <li> <%= cow.name %> </li>
-    <li> Located in:  <%= cow.field_name %> </li>
+    <li> Located in: <%= cow.field_name %> 
     <li><a href="/cows/<%=cow.id%>">Cow Specs</a></li><br></br>
   
 <% end %>
-
+<br></br>
 <a href="/cows/add_new">Add New Cow</a><br></br>

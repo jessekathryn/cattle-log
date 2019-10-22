@@ -1,9 +1,37 @@
+<br></br>
+<a href="/users/<%= current_user.id %>">My Profile</a>  <img src="/images/circle.png" class="img-responsive main-image"> <a href="/cows/all">My Cows</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/fields/all">My Fields</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/expenses/all">My Expenses</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/logout">Log Out</a>
+<br></br>
+
+
 <img src="/images/expenses.png" class="img-responsive main-image">
 
-<h1><%= @expense.notes %> </h1><br></br>
-
+<h3>Expense date: <%= @expense.notes %></h3>
+<li>Chemicals: $ <%= @expense.chemicals %></li>
+<li>Conservation: $ <%= @expense.conservation %></li>
+<li>Chemicals: $ <%= @expense.chemicals %></li>
+<li>Depreciation: $ <%= @expense.depreciation %></li>
+<li>Employees: $ <%= @expense.employees %></li>
+<li>Feed: $ <%= @expense.feed %></li>
+<li>Freight and Trucking: $ <%= @expense.freight_trucking %></li>
+<li>Gas: $ <%= @expense.gas %></li>
+<li>Insurance: $ <%= @expense.insurance %></li>
+<li>Interest: $ <%= @expense.interest %></li>
+<li>Repairs: $ <%= @expense.repairs %></li>
+<li>Seeds and Fertilizer: $ <%= @expense.seeds_plants %></li>
+<li>Storage: $ <%= @expense.storage %></li>
+<li>Supplies: $ <%= @expense.supplies %></li>
+<li>Vet or Medicine: $ <%= @expense.vet %></li>
+<li>Tools: $ <%= @expense.tools %></li>
+<li>Fencing and Land: $ <%= @expense.fencing_land %></li>
+<li>New calf: $ <%= @expense.calf %></li>
+<li>Dues: $ <%= @expense.dues %></li>
+<li>Misc Labor: $ <%= @expense.misc_labor %></li>
+<li>Professional: $ <%= @expense.professional %></li>
+<br></br>
+<form method="patch" action="/expenses/<%=@expense.id%>/edit">
+  <input type="submit" value="Edit Expense">
+</form>
 <form method="post" action="/expenses/<%=@expense.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Field">
+  <input type="submit" value="Delete Expense">
 </form>
-<br></br>

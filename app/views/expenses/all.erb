@@ -1,9 +1,12 @@
+<br></br>
+<a href="/users/<%= current_user.id %>">My Profile</a>  <img src="/images/circle.png" class="img-responsive main-image"> <a href="/cows/all">My Cows</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/fields/all">My Fields</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/expenses/all">My Expenses</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/logout">Log Out</a>
+<br></br>
+
 <img src="/images/expenses.png" class="img-responsive main-image">
 
-<h1>Welcome Back, @<%= current_user.username %></h1>
-<h2>Your Expenses</h2>
-
 <% @expense.each do |expense| %>
-    <li>Expense: $ <%= expense.notes %></li>
-    <% end %><br></br>
+    <li>Expense Date <%= expense.notes %></li>
+    <li><a href="/expenses/<%=expense.id%>">Details</a><li><br></br>
+    <% end %>
 
+<a href="/expenses/add_new">Add New Expense</a><br></br>

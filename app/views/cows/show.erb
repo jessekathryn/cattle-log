@@ -1,8 +1,12 @@
-<img src="/images/mycows.png" class="img-responsive main-image">
+<br></br>
+<a href="/users/<%= current_user.id %>">My Profile</a>  <img src="/images/circle.png" class="img-responsive main-image"> <a href="/cows/all">My Cows</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/fields/all">My Fields</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/expenses/all">My Expenses</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/logout">Log Out</a>
+<br></br>
+
+<img src="/images/mycowsbest.png" class="img-responsive main-image">
 
 <h1><%= @cow.name %> </h1><br></br>
-<h2> Current details as of @date.saved </h2>
-<p> Tag ID # <%= @cow.tag_number %></p>
+<h2> Current details as of <%= Time.now %> </h2>
+<p> Tag ID No. <%= @cow.tag_number %></p>
 <p>Field Name: <%= @cow.field_name %></p>
 <p>Year Born: <%= @cow.birthdate %></p>
 <p>Health: <%= @cow.health %> </p>
@@ -11,11 +15,11 @@
 <p>Age: <%= @cow.age %> </p>
 <p>Weight: <%= @cow.weight %></p>
 <p>Notes: <%= @cow.notes %> </p>
-<br></br>
+
 <form method="post" action="/cows/<%=@cow.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Cow">
-</form><br></br>
+</form>
 <form method="patch" action="/cows/<%=@cow.id%>/edit">
   <input type="submit" value="Edit Cow">
 </form>
