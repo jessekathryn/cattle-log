@@ -8,9 +8,19 @@ class User < ActiveRecord::Base
     has_many :fields
     has_many :expenses
 
+    def date 
+      time = Time.now
+      time.strftime("%d %B %Y")
+    end
+
     def time 
-      time = Time.new
-      puts "Current Time : " + time.inspect
+      time = Time.now
+      time.strftime("%I:%M %p") 
+    end
+    
+    def today
+      time = Time.now
+      time.strftime("Today is %A") 
     end
 
     def get_temp

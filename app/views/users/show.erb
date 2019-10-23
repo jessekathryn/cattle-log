@@ -1,14 +1,18 @@
 <br></br>
-<img src="/images/circle.png" class="img-responsive main-image"> <%= Time.now %> <img src="/images/circle.png" class="img-responsive main-image">
+<img src="/images/myfarm.png" class="img-responsive main-image">
+<h1>Hi, <%= current_user.username %></h1>
+<h2><%=@user.time%> </h2>
 
-<h1>Welcome Back, <%= current_user.username %></h1>
-<img src="/images/farm.png" class="img-responsive main-image">
+<br></br>
+<h3><%=@user.today%> </h3>
+
 <h3> <%=@user.get_temp%>°F / <%=@user.weather_text%> for Islandton, SC </h3>
-<h4><%= Time.now.month %>/<%= Time.now.day %> CME Live Cattle Price $<%=@user.get_market_prices%> </h4>
+<br></br>
+<h3> CME Live Cattle Price <font color="red">$<%=@user.get_market_prices%></font> for <%=@user.date%></font> </h3>
 <br></br>
 
-<img src="/images/track.png" class="img-responsive main-image">
+<img src="/images/myline.png" class="img-responsive main-image">
 <br></br>
- <a href="/users/<%= current_user.id %>">My Profile</a>  <img src="/images/circle.png" class="img-responsive main-image"> <a href="/cows/all">My Cows</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/fields/all">My Fields</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/expenses/all">My Expenses</a> <img src="/images/circle.png" class="img-responsive main-image"> <a href="/logout">Log Out</a>
-   <br></br>
-
+ <a href="/users/<%= current_user.id %>"> profile </a>  &nbsp; <a href="/cows/all"> cows </a> &nbsp; <a href="/fields/all"> fields </a> &nbsp; <a href="/expenses/all"> expenses </a>&nbsp;  <a href="/logout"> logout </a>
+ <br></br>
+   
