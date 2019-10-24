@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-#make sure username is unique
-#sign up is filled in and not duplicate
+
     get "/users/:id" do
         @user = User.find_by(params[:user])
         erb :'/users/show'
@@ -16,7 +15,7 @@ class UsersController < ApplicationController
      
     post "/signup_welcome" do
         @user = User.new(:email => params[:email], :username => params[:username], :password => params[:password])
-            if @user.username != "" && @user.email != "" && @user.password != "" && @user.password_digest
+        if @user.username != @user.username && @user.username != "" && @user.email != "" && @user.password != "" && @user.password_digest
                 @user.save
                 session[:user_id] = @user.id  
                 redirect to '/cows/all'

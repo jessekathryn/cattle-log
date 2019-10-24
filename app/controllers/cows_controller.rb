@@ -25,48 +25,38 @@ class CowsController < ApplicationController
   end
 
   get "/cows/:id" do
-    if logged_in?
-      @cow = Cow.find_by_id(params[:id])
-      erb :'/cows/show'
-    else 
-      redirect to '/login'
-    end
+    redirect_if_not_logged_in
+    @cow = Cow.find_by_id(params[:id])
+    erb :'/cows/show'
   end
 
   get "/cows/:id/edit" do
-    if logged_in? 
-      @cow = Cow.find_by_id(params[:id])
-      if @cow && @cow.user == current_user
+    redirect_if_not_logged_in
+    if  @cow = Cow.find_by_id(params[:id])
+        @cow && @cow.user == current_user
         erb :"/cows/edit"
-      else 
+    else 
         redirect to '/cows/all'
-      end
-    else
-      redirect to '/login'
-    end 
+    end
   end
 
     patch '/cows/:id/edit' do
-      if logged_in?  
+      redirect_if_not_logged_in
         @cow = Cow.find_by_id(params[:id])
         if @cow && @cow.user == current_user
           @cow.update(params[:cow])
-        end
+        else
           redirect to "/cows/#{@cow.id}"
-      else
-        redirect to '/login'
       end
     end
 
     delete "/cows/:id/delete" do
-      if logged_in?
+      redirect_if_not_logged_in
         @cow = Cow.find_by_id(params[:id])
         if @cow && @cow.user == current_user
           @cow.delete
-        end
+        else
           redirect to '/cows/all'
-          else
-          redirect to '/login'
       end
     end
 
