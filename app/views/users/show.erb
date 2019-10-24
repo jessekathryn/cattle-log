@@ -2,14 +2,14 @@
 <img src="/images/myfarm.png" class="img-responsive main-image">
 <h1>Hi, <%= current_user.username %></h1>
 <br></br>
-<h2><%=@scraper.time%> </h2>
+<h2><%=@user.time%> </h2>
 
 <br></br>
-<h3><%=@scraper.today%> </h3>
+<h3><%=@user.today%> </h3>
 
-<h3> <%=@scraper.get_temp%>°F / <%=@user.weather_text%> for Islandton, SC </h3>
+<h3> <%=@user.get_temp%>°F / <%=@user.weather_text%> for Islandton, SC </h3>
 <br></br>
-<h3> CME Live Cattle Price <font color="red">$<%=@scraper.get_market_prices%></font> for <%=@scraper.date%></font> </h3>
+<h3> CME Live Cattle Price <font color="red">$<%=@user.get_market_prices%></font> for <%=@user.date%></font> </h3>
 <br></br>
 
 <img src="/images/myline.png" class="img-responsive main-image">
