@@ -28,5 +28,12 @@ class ApplicationController < Sinatra::Base
       puts "Current Time : " + time.inspect
     end
   
+    def redirect_if_not_logged_in
+      if !logged_in?
+        redirect to '/login'
+      end
+    end
+
   end
+
 end

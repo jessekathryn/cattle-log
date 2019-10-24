@@ -1,35 +1,27 @@
 class CowsController < ApplicationController
 
     get "/cows/all" do
-        if logged_in? 
-            @cows = current_user.cows
-            erb :'/cows/all'
-        else
-            redirect to '/login'
-        end
+      redirect_if_not_logged_in
+      @cows = current_user.cows
+      erb :'/cows/all'
     end
 
     get "/cows/add_new" do
-        if logged_in?  
-           erb :'/cows/add_new'
-        else
-           redirect to '/login'
-        end
+      redirect_if_not_logged_in
+      erb :'/cows/add_new'
     end
 
     post "/cows/all" do
-      if logged_in?
-        if params[:cow].empty?  
+      redirect_if_not_logged_in
+        if params[:cow][:name].empty?  
           redirect to '/cows/add_new'
         else
           @cow = Cow.create(params[:cow])
           @cow.user_id = current_user.id
           if @cow.save
             redirect("/cows/all")
-        end 
-         redirect to '/login'
-      end  
-    end
+          end 
+      end
   end
 
   get "/cows/:id" do
@@ -57,7 +49,9 @@ class CowsController < ApplicationController
     patch '/cows/:id/edit' do
       if logged_in?  
         @cow = Cow.find_by_id(params[:id])
-        @cow.update(params[:cow])
+        if @cow && @cow.user == current_user
+          @cow.update(params[:cow])
+        end
           redirect to "/cows/#{@cow.id}"
       else
         redirect to '/login'
@@ -67,7 +61,9 @@ class CowsController < ApplicationController
     delete "/cows/:id/delete" do
       if logged_in?
         @cow = Cow.find_by_id(params[:id])
-         @cow.delete
+        if @cow && @cow.user == current_user
+          @cow.delete
+        end
           redirect to '/cows/all'
           else
           redirect to '/login'

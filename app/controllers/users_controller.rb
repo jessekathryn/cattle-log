@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+#make sure username is unique
+#sign up is filled in and not duplicate
     get "/users/:id" do
         @user = User.find_by(params[:user])
         erb :'/users/show'
