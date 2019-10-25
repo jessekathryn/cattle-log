@@ -1,16 +1,25 @@
 development:
-    adapter: postgresql
-    encoding: unicode
-    database: cattle_log
-    pool: 2
-    username: jessebarnes
-    password: Olliethefourth2016
+  adapter: postgresql
+  encoding: unicode
+  database: cattle_log
+  host: localhost
+  pool: 5
+  username: jessebarnes
+  password: Olliethefourth2016
+
+test: 
+  adapter: postgresql
+  encoding: utf8
+  database: cattle_log_test
+  host: localhost
+  pool: 5
+  username: jessebarnes
+  password: Olliethefourth2016
 
 production:
-    adapter: postgresql
-    encoding: unicode
-    pool: 5
-    host: <%= ENV['localhost'] %>
-    database: <%= ENV['cattle_log'] %>
-    username: <%= ENV['jessebarnes'] %>
-    password: <%= ENV['Olliethefourth2016'] %>
+  adapter: postgresql
+  encoding: utf8
+  database: cattle_log_prod
+  pool: 5
+  username: jessebarnes
+  password: Olliethefourth2016
