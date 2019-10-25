@@ -51,7 +51,7 @@ class CowsController < ApplicationController
     end
 
     delete "/cows/:id/delete" do
-      redirect_if_not_logged_in
+       redirect_if_not_logged_in
         @cow = Cow.find_by_id(params[:id])
         if @cow && @cow.user == current_user
           @cow.delete

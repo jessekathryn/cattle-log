@@ -3,7 +3,8 @@ require 'open-uri'
 
 class User < ActiveRecord::Base
     has_secure_password
-    
+    validates_uniqueness_of :username
+
     has_many :cows
     has_many :fields
     has_many :expenses
