@@ -6,7 +6,7 @@ Bundler.require(:default, ENV['SINATRA_ENV'])
 
 ActiveRecord::Base.establish_connection(
   :adapter => "postgresql",
-  :database => "cattle_log_dev"
+  :database => "cattlelog_dev"
 )
 
 require_all 'app' 

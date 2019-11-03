@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20191013051638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "postgis"
 
   create_table "cows", force: :cascade do |t|
     t.string  "name"
@@ -66,13 +65,6 @@ ActiveRecord::Schema.define(version: 20191013051638) do
     t.string  "crop"
     t.integer "coordinates"
     t.integer "user_id"
-  end
-
-  create_table "spatial_ref_sys", primary_key: "srid", force: :cascade do |t|
-    t.string  "auth_name", limit: 256
-    t.integer "auth_srid"
-    t.string  "srtext",    limit: 2048
-    t.string  "proj4text", limit: 2048
   end
 
   create_table "users", force: :cascade do |t|
